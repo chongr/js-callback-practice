@@ -1,4 +1,5 @@
 var readline = require('readline');
+
 var reader = readline.createInterface({
   input: process.stdin,
   output: process.stdout
@@ -9,11 +10,11 @@ var addNumbers = function(currentSum, numLeft, completionCallback) {
 
     reader.question("enter number:", function (enteredNumber) {
       var updatedSum = currentSum + parseInt(enteredNumber);
-      completionCallback(updatedSum);
       addNumbers(updatedSum, numLeft - 1, completionCallback);
     });
 
   } else {
+    completionCallback(currentSum);
     reader.close();
   }
 };
